@@ -1,19 +1,16 @@
-import { test, expect, Locator } from "@playwright/test";
-import { NavigationPage } from "../../page-objects/navigationPage";
-import { DatePicker } from "../../page-objects/datePicker";
+import { test} from "@playwright/test";
+import { PageManager } from "../../page-objects/pageManager";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:4200/");
 });
 
 test("date picker", async ({ page }) => {
-  const navigateTo = new NavigationPage(page);
-  const datePicker = new DatePicker(page);
-  await navigateTo.datePickerPage();
+  const pm = new PageManager(page);
+  await pm.navigateTo().datePickerPage();
   const testCases = [0, 1, 25, 50, 300, -1, -25, -50, -300];
 
   for (const testCase of testCases) {
-    await datePicker.selectCommonDatePickerDateFromToday(testCase);
-    
+    await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(testCase);
   }
 });
