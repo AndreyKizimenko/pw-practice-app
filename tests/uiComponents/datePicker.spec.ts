@@ -44,6 +44,10 @@ test("date picker", async ({ page }) => {
         });
     }
 
+// expand the calendar
+dateInput.click();
+await page.waitForSelector(".day-cell.ng-star-inserted");
+
     // define a button the test should look for (back or forward 1 month)
     const paginationButton = (await intendedDate.isVisible())
       ? null
@@ -51,9 +55,7 @@ test("date picker", async ({ page }) => {
       ? page.locator("button.prev-month")
       : page.locator("button.next-month");
 
-    // expand the calendar
-    dateInput.click();
-    await page.waitForSelector(".day-cell.ng-star-inserted");
+    
 
     // if the date is today, just select that date
     if (testCase === 0) {
