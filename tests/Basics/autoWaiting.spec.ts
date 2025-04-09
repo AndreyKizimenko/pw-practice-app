@@ -5,12 +5,11 @@ test.describe("auto waiting examples", () => {
     await page.goto("http://uitestingplayground.com/ajax");
     await page.getByRole("button", { name: "AJAX Request" }).click();
     // testInfo.setTimeout(testInfo.timeout + 15000);
-    
   });
 
-  test("wait for", async ({ page }) => {    
+  test("wait for", async ({ page }) => {
     const successMessage = page.locator(".bg-success");
-    await successMessage.waitFor({ state: "visible" });   
+    await successMessage.waitFor({ state: "visible" });
     await expect(successMessage).toBeVisible();
   });
 
@@ -26,7 +25,7 @@ test.describe("auto waiting examples", () => {
     //await page.waitForSelector(".bg-success");
 
     // wait for particular response
-    await page.waitForResponse("http://uitestingplayground.com/ajaxdata")
+    await page.waitForResponse("http://uitestingplayground.com/ajaxdata");
 
     // wait for network calls to be completed ("Not recommended")
     //await page.waitForLoadState("networkidle");
@@ -35,7 +34,5 @@ test.describe("auto waiting examples", () => {
 
     // assertion
     await expect(successMessage).toBeVisible();
-    
-
   });
 });

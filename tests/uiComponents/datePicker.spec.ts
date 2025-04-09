@@ -22,7 +22,7 @@ test("date picker", async ({ page }) => {
         year: "numeric",
       });
     }
-  };  
+  };
 
   const dateInput = page.getByPlaceholder("Form Picker");
   const dateLocator = page.locator("[class='day-cell ng-star-inserted']");
@@ -44,9 +44,9 @@ test("date picker", async ({ page }) => {
         });
     }
 
-// expand the calendar
-dateInput.click();
-await page.waitForSelector(".day-cell.ng-star-inserted");
+    // expand the calendar
+    dateInput.click();
+    await page.waitForSelector(".day-cell.ng-star-inserted");
 
     // define a button the test should look for (back or forward 1 month)
     const paginationButton = (await intendedDate.isVisible())
@@ -54,8 +54,6 @@ await page.waitForSelector(".day-cell.ng-star-inserted");
       : testCase < 0
       ? page.locator("button.prev-month")
       : page.locator("button.next-month");
-
-    
 
     // if the date is today, just select that date
     if (testCase === 0) {
@@ -73,6 +71,6 @@ await page.waitForSelector(".day-cell.ng-star-inserted");
     }
 
     // assertion
-    await expect(dateInput).toHaveValue(dateFormatter(date, "full"));    
+    await expect(dateInput).toHaveValue(dateFormatter(date, "full"));
   }
 });
