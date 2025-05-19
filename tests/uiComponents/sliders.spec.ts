@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("sliders coordinates", async ({ page }) => {
-  await page.goto("http://localhost:4200/");
+  await page.goto("/");
   const tempGauge = page.locator(
     "[tabtitle='Temperature'] ngx-temperature-dragger circle"
   );
@@ -13,7 +13,7 @@ test("sliders coordinates", async ({ page }) => {
 });
 
 test("sliders dragging", async ({ page }) => {
-  await page.goto("http://localhost:4200/");
+  await page.goto("/");
   const tempBox = page.locator(
     "[tabtitle='Temperature'] ngx-temperature-dragger"
   );
