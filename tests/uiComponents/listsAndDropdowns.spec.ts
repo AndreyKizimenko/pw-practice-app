@@ -43,7 +43,7 @@ test.describe("lists and dropdowns", () => {
         .locator("nb-option-list nb-option", { hasText: theme })
         .click();
       expect(await navDropdownButton.textContent()).toMatch(theme);
-      expect(header).toHaveCSS("background-color", themes[theme]);
+      await expect(header).toHaveCSS("background-color", themes[theme]);
     }
   });
 });
