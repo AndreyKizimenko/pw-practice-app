@@ -11,8 +11,8 @@ test("sign in using the grid", async ({ page }) => {
   await pm
     .onFormLayoutPage()
     .submitUsingTheGridFormWithCredentialsAndSelectOption(
-      "test@test.com",
-      "12345password",
+      process.env.E2E_USERNAME,
+      process.env.E2E_PASSWORD,
       "Option 2"
     );
 });
